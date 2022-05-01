@@ -90,10 +90,14 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     var aiDivChoice = document.createElement('div');
     var messageDiv = document.createElement('div');
 
-    humanDivChoice.innerHTML = "<img src='" + imagesDb[humanImageChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px #0000ff;'>";
+    humanDivChoice.innerHTML = "<img src='" + imagesDb[humanImageChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px #0000ff;'>"
 
-    aiDivChoice.innerHTML = "<img src='" + imagesDb[aiDivChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px rgb(202, 33, 33);'>";
+    aiDivChoice.innerHTML = "<img src='" + imagesDb[botImageChoice] + "' height=150 width=150 style='box-shadow: 0px 10px 50px rgb(202, 33, 33);'>"
+
+    messageDiv.innerHTML = "<h1 style='color: " + finalMessage['color'] + "; font-size: 60px; padding: 30px; '>" + finalMessage['message'] + "</h1>"
 
     document.getElementById('flex-box-rps-div').appendChild(humanDivChoice);
+    document.getElementById('flex-box-rps-div').appendChild(messageDiv);
     document.getElementById('flex-box-rps-div').appendChild(aiDivChoice);
+    
 }
