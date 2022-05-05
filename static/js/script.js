@@ -104,11 +104,56 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
 
 // Challenge 4: Change the Color of ALL Buttons
 var all_btns = document.getElementsByTagName('button');
-console.log(all_btns);
+
 
 var copyAllBtns = [];
 for (let i = 0; i < all_btns.length; i++) {
-    copyAllBtns.push(all_btns[i]);
+    copyAllBtns.push(all_btns[i].classList[1]);
     
 }
-console.log(copyAllBtns[0].classList);
+
+console.log(copyAllBtns);
+
+function btnColorChange(btnThingy) {
+    if (btnThingy.value === 'red') {
+        btnRed();
+    } else if (btnThingy.value === 'green') {
+        btnGreen();
+    }else if (btnThingy.value === 'reset') {
+        btnColorReset();
+    }else if (btnThingy.value === 'random') {
+        randomColors();
+    }
+}
+
+function btnRed() {
+    for (let i = 0; i < all_btns.length; i++) {
+        all_btns[i].classList.remove(all_btns[i].classList[1]);
+        all_btns[i].classList.add('btn-danger');
+    }
+}
+
+function btnGreen() {
+    for (let i = 0; i < all_btns.length; i++) {
+        all_btns[i].classList.remove(all_btns[i].classList[1]);
+        all_btns[i].classList.add('btn-success');
+    }
+}
+
+function btnColorReset() {
+    for (let i = 0; i < all_btns.length; i++) {
+        all_btns[i].classList.remove(all_btns[i].classList[1]);
+        all_btns[i].classList.add(copyAllBtns[i]);
+    }
+}
+
+function randomColors() {
+    let choices = ['btn-primary', 'btn-danger', 'btn-success', 'btn-warning'];
+    
+
+    for (let i = 0; i < all_btns.length; i++) {
+        let randomNum = Math.floor(Math.random() * 4);
+        all_btns[i].classList.remove(all_btns[i].classList[1]);
+        all_btns[i].classList.add(choices[randomNum]);
+    }
+}
